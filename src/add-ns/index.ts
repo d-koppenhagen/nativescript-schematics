@@ -18,7 +18,7 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { dasherize } from '@angular-devkit/core/src/utils/strings';
 
 import { Schema as MigrationOptions } from './schema';
-import { getJsonFile, getFileContents, getPackageJson, overwritePackageJson } from '../utils';
+import { getJsonFile, getFileContents, getPackageJson, overwritePackageJson, addDependency } from '../utils';
 import { getAngularProjectSettings, AngularProjectSettings } from '../angular-project-parser';
 import { Extensions } from '../generate/utils';
 
@@ -374,6 +374,7 @@ const addDependencies = () => (tree: Tree, context: SchematicContext) => {
 
   const devDepsToAdd = {
     'nativescript-dev-webpack': '~1.5.0',
+    '@nativescript/schematics': '~9.0.1',
     '@nativescript/tslint-rules': '~0.0.5',
   };
   packageJson.devDependencies = {...devDepsToAdd, ...packageJson.devDependencies};
